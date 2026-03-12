@@ -48,3 +48,4 @@ if df is not None:
         avg_p = df_filtered.groupby("OverallQual")["SalePrice"].mean().reset_index()
 
         st.plotly_chart(px.bar(avg_p, x="OverallQual", y="SalePrice", title="Prix Moyen / Qualité"), use_container_width=True)
+
