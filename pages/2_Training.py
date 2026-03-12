@@ -34,3 +34,8 @@ if 'df_raw' in st.session_state:
 else:
     st.error("Données manquantes. Retournez à la page Data.")
 
+#bloc de sécurité
+if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
+    st.warning("Veuillez vous connecter sur la page d'accueil (app) pour accéder à cette page.")
+    st.stop()
+
