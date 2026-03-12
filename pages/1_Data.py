@@ -6,7 +6,7 @@ import os
 st.title("💾 Exploration des Données")
 
 # Chemin vers le fichier local
-DATA_PATH = r"C:\Users\LO Adja Maguette\OneDrive - VINCI Energies\Bureau\IA M2 DS\Création d'une app web pour visualiser les données\train.csv"
+DATA_PATH = "data/train.csv"
 @st.cache_data
 def get_local_data():
     if os.path.exists(DATA_PATH):
@@ -46,4 +46,5 @@ if df is not None:
         st.plotly_chart(px.box(df_filtered, x="Neighborhood", y="SalePrice", title="Prix par Quartier"), use_container_width=True)
     with col4:
         avg_p = df_filtered.groupby("OverallQual")["SalePrice"].mean().reset_index()
+
         st.plotly_chart(px.bar(avg_p, x="OverallQual", y="SalePrice", title="Prix Moyen / Qualité"), use_container_width=True)
