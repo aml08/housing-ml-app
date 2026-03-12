@@ -21,6 +21,11 @@ def get_local_data():
 # Chargement automatique
 df = get_local_data()
 
+#bloc de sécurité
+if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
+    st.warning("Veuillez vous connecter sur la page d'accueil (app) pour accéder à cette page.")
+    st.stop()
+
 if df is not None:
     # On stocke dans la session pour les autres pages
     st.session_state['df_raw'] = df
@@ -48,4 +53,5 @@ if df is not None:
         avg_p = df_filtered.groupby("OverallQual")["SalePrice"].mean().reset_index()
 
         st.plotly_chart(px.bar(avg_p, x="OverallQual", y="SalePrice", title="Prix Moyen / Qualité"), use_container_width=True)
+
 
