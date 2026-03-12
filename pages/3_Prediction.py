@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import job_lib # ou import pickle selon ton utilitaire
+import joblib 
 from utils.model_utils import clean_data
 
 # --- 1. SÉCURISATION DE LA PAGE ---
@@ -56,3 +56,4 @@ if submit:
         print(f"LOG: Erreur de prédiction - {e}")
 
 st.info("💡 Note : Les logs de cette opération sont consultables dans la console Streamlit Cloud.")
+
