@@ -32,4 +32,10 @@ if 'model' in st.session_state:
         st.metric(label="Estimation du prix", value=f"{prediction:,.0f} $", delta="Prix de marché")
         st.balloons()
 else:
+
     st.warning("Veuillez d'abord entraîner le modèle sur la page Training.")
+
+#bloc de sécurité
+if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
+    st.warning("Veuillez vous connecter sur la page d'accueil (app) pour accéder à cette page.")
+    st.stop()
